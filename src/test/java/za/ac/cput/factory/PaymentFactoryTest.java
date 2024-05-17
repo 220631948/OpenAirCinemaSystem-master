@@ -41,4 +41,26 @@ class PaymentFactoryTest {
         assertNull(ticket);
     }
 
+    @Test
+    @Test
+    public void buildTicket_withInvalidSeatNumber_returnsNull() {
+        Booking booking = new Booking();
+        Ticket ticket = TicketFactory.buildTicket(1, "booking1", "type1", "", 100.0, 1, booking);
+        assertNull(ticket);
+    }
+
+    @Test
+    public void buildTicket_withInvalidTicketPrice_returnsNull() {
+        Booking booking = new Booking();
+        Ticket ticket = TicketFactory.buildTicket(1, "booking1", "type1", "seat1", -1.0, 1, booking);
+        assertNull(ticket);
+    }
+
+    @Test
+    public void buildTicket_withInvalidTicketQuantity_returnsNull() {
+        Booking booking = new Booking();
+        Ticket ticket = TicketFactory.buildTicket(1, "booking1", "type1", "seat1", 100.0, -1, booking);
+        assertNull(ticket);
+    }
+
 }
