@@ -27,4 +27,11 @@ class PaymentFactoryTest {
         assertNotNull(ticket);
     }
 
+    @Test
+    void buildTicket_withInvalidTicketId_returnsNull() {
+        Booking booking = new Booking();
+        Ticket ticket = TicketFactory.buildTicket(-1, "booking1", "type1", "seat1", 100.0, 1, booking);
+        assertNull(ticket);
+    }
+
 }
