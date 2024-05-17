@@ -15,10 +15,16 @@ class PaymentFactoryTest {
 
 
     @Test
-    public void buildTicket_withInvalidTicketType_returnsNull() {
+    void buildTicket_withInvalidTicketType_returnsNull() {
         Booking booking = new Booking();
         Ticket ticket = TicketFactory.buildTicket(1, "booking1", "", "seat1", 100.0, 1, booking);
         assertNull(ticket);
+    }
+
+    void buildTicket_withValidParameters_returnsTicket() {
+        Booking booking = new Booking();
+        Ticket ticket = TicketFactory.buildTicket(1, "booking1", "type1", "seat1", 100.0, 1, booking);
+        assertNotNull(ticket);
     }
 
 }
